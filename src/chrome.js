@@ -714,7 +714,7 @@
     get tabs() {
       return getter("tabs", {
         captureVisibleTab: 0,
-        connect: 0,
+        connect: chromeApi.connect,
         create: 0,
         detectLanguage: 0,
         duplicate: 0,

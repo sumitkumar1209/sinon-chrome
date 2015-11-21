@@ -5,12 +5,21 @@
 (function () {
 
   var chromeApi = {
-    executeScript: function (objectDetail) {
+    executeScript: function (id, objectDetail) {
       if (objectDetail.hasOwnProperty("code")) {
         eval(objectDetail["code"])
       }
       else if (objectDetail.hasOwnProperty("file") && objectDetail.hasOwnProperty("init_method")) {
         objectDetail["init_method"].call()
+      }
+    },
+    connect: function(id){
+      return {
+        portId: id,
+        onMessage:1,
+        onDisconnect: 1,
+        disconnect: 0,
+        postMessage:0
       }
     }
   };
