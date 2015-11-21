@@ -129,22 +129,14 @@
 (function () {
 
   var chromeApi = {
-    executeScript: function (id, objectDetail) {
+    executeScript: function (id, objectDetail, callback) {
       if (objectDetail.hasOwnProperty("code")) {
         eval(objectDetail["code"]);
       }
       else if (objectDetail.hasOwnProperty("file") && objectDetail.hasOwnProperty("init_method")) {
         objectDetail["init_method"].call();
       }
-    },
-    connect: function(id){
-      return {
-        portId: id,
-        onMessage:1,
-        onDisconnect: 1,
-        disconnect: 0,
-        postMessage:0
-      };
+        callback();
     }
   };
   // exports
@@ -946,6 +938,15 @@
         getCapturedTabs: 0,
         onStatusChanged: 1
       });
+    },
+
+    get tabPort(){
+      return getter("tabPort",{
+        onMessage:1,
+        onDisconnect: 1,
+        disconnect: 0,
+        postMessage:0
+      })
     },
 
     get tabs() {

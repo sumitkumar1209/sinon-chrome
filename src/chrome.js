@@ -711,6 +711,15 @@
       });
     },
 
+    get tabPort(){
+      return getter("tabPort",{
+        onMessage:1,
+        onDisconnect: 1,
+        disconnect: 0,
+        postMessage:0
+      })
+    },
+
     get tabs() {
       return getter("tabs", {
         captureVisibleTab: 0,
