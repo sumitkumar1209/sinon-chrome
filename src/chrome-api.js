@@ -7,10 +7,10 @@
   var chromeApi = {
     executeScript: function (id, objectDetail) {
       if (objectDetail.hasOwnProperty("code")) {
-        eval(objectDetail["code"])
+        eval(objectDetail["code"]);
       }
       else if (objectDetail.hasOwnProperty("file") && objectDetail.hasOwnProperty("init_method")) {
-        objectDetail["init_method"].call()
+        objectDetail["init_method"].call();
       }
     },
     connect: function(id){
@@ -20,7 +20,7 @@
         onDisconnect: 1,
         disconnect: 0,
         postMessage:0
-      }
+      };
     }
   };
   // exports
